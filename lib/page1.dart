@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 void main() {
@@ -17,7 +16,7 @@ class MyApp extends StatelessWidget {
         // This is the theme of your application.
         //
         // TRY THIS: Try running your application with "flutter run". You'll see
-        // the application has a purple toolbar. Then, without quitting the app,
+        // the applicat ion has a purple toolbar. Then, without quitting the app,
         // try changing the seedColor in the colorScheme below to Colors.green
         // and then invoke "hot reload" (save your changes or press the "hot
         // reload" button in a Flutter-supported IDE, or press "r" if you used
@@ -29,10 +28,10 @@ class MyApp extends StatelessWidget {
         //
         // This works for code too, not just values: Most code changes can be
         // tested with just a hot reload.black
-        scaffoldBackgroundColor:const Color(0xFF070C16),
+        scaffoldBackgroundColor:Colors.blue[100],
         colorScheme: .fromSeed(seedColor: Colors.white),
       ),
-      home: const MyHomePage(title: ' Routewise Login'),
+      home: const MyHomePage(title: ' Routewise'),
     );
   }
 }
@@ -56,7 +55,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
- // int _counter = 0;
+  // int _counter = 0;
 
   /*void _incrementCounter() {
     setState(() {
@@ -82,27 +81,12 @@ class _MyHomePageState extends State<MyHomePage> {
         // TRY THIS: Try changing the color here to a specific color (to
         // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
         // change color while the other colors stay the same.
-        backgroundColor:const Color(0xFF070C16),//Theme.of(context).colorScheme.inversePrimary,
+        backgroundColor:Theme.of(context).colorScheme.inversePrimary,
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
-        centerTitle:true,
-        title:RichText(
-          text:const TextSpan(
-            children:[
-              TextSpan(
-            text:'Route',
-            style:TextStyle(fontSize:30,color:Color(0xFFFFC400)),
-              ),
-              TextSpan(
-                text:'Wise',
-                style:TextStyle(fontSize:30,color:Color(0xFFE8E8E8)),
-              ),
-            ],
+        title: const Text('Route',
+        style:TextStyle(fontSize:30,color:Color(0xFFFFC400)),
         ),
-        ),
-        //title: const Text('Route',
-        //style:TextStyle(fontSize:30,color:Color(0xFFFFC400)),
-        //),
 
       ),
       body: Center(

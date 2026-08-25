@@ -122,9 +122,12 @@ class _MyHomePageState extends State<MyHomePage> {
           // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
           // action in the IDE, or press "p" in the console), to see the
           // wireframe for each widget.
-          mainAxisAlignment: .center,
+          mainAxisAlignment: .start,
           children: [
-            const Text('login :'),
+            const SizedBox(height:200),
+            const Text('Welcome! Please Sign In ',
+              style:TextStyle(fontSize:25,color:Color(0xFFAEB9CE)),
+            ),
             /*Text(
               //'$_counter',
              style: Theme.of(context).textTheme.headlineMedium,

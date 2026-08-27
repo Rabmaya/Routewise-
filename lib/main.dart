@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'page1.dart';
 
 void main() {
   runApp(const MyApp());
@@ -68,7 +69,7 @@ class _MyHomePageState extends State<MyHomePage> {
       _counter++;
     });
   }*/
-
+bool hidepassword =true;
   @override
   Widget build(BuildContext context) {
     // This method is rerun every time setState is called, for instance as done
@@ -124,16 +125,31 @@ class _MyHomePageState extends State<MyHomePage> {
           // wireframe for each widget.
           mainAxisAlignment: .start,
           children: [
-            const SizedBox(height:200),
+            const SizedBox(height:180),
             const Text('Welcome! Please Sign In ',
               style:TextStyle(fontSize:25,color:Color(0xFFAEB9CE)),
             ),
-            /*Text(
-              //'$_counter',
-             style: Theme.of(context).textTheme.headlineMedium,
-            ),*/
+            const SizedBox(height:40),
+              TextField(
+                decoration: InputDecoration(
+                    hintText: 'Email or Phone',
+                    hintStyle: const TextStyle(color: Color(0xFFAEB9CE)
+                    ),
+                    filled: true,
+                    fillColor:  const Color(0xFF151A24),
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(7),
+                      borderSide: const BorderSide(
+                        color:Color(0xFF303747),
+                      ),
+                    )
+              ),
+            ),
+
           ],
         ),
+        //insert hrere
+
       ),
 
 

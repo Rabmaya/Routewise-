@@ -145,6 +145,39 @@ bool hidepassword =true;
                     )
               ),
             ),
+            const SizedBox(height:20),
+            TextField(
+              decoration: InputDecoration(
+                  hintText: 'Password',
+                  hintStyle: const TextStyle(color: Color(0xFFAEB9CE)
+                  ),
+                  filled: true,
+                  fillColor:  const Color(0xFF151A24),
+                  suffixIcon: IconButton(icon: Icon(
+                    hidepassword
+                        ?Icons.visibility_off
+                        :Icons.visibility,
+                  ),
+                      onPressed:()
+                      {
+                        setState(() {
+                          hidepassword=!hidepassword;
+                        });
+                      }
+                  ),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(7),
+                    borderSide: const BorderSide(
+                      color:Color(0xFF303747),
+                    ),
+                  )
+              ),
+            ),
+
+/*Text(
+              //'$_counter',
+             style: Theme.of(context).textTheme.headlineMedium,
+            ),*/
 
           ],
         ),

@@ -28,14 +28,25 @@ class page1 extends StatelessWidget {
 child: Column(
 
 
-
-    const SizedBox(height:20),
-    _favouritePath('gulshan to motizheel'),
-        ],
-  //hvfjhgjfgjjggjhgj
+  mainAxisAlignment: .start,
+  children: [
+    const SizedBox(height:30),
+    Container(
+      width:double.infinity,
+      decoration:BoxDecoration(
+        color: const Color(0xFFDDF3FC),
+        borderRadius: BorderRadius.circular(9),
+        border: Border.all(
+          color: const Color(0xFFBFE3f2),
+        ),
       ),
-      ),
 
+      ),
     );
-  }
+        }
+}
+
+
+
+
 

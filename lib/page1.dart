@@ -41,9 +41,29 @@ child: Column(
         ),
       ),
 
+        ),
+        const SizedBox(height:20),
+        _favouritePath('gulshan to motizheel'),
+      ],
+    ),
       ),
     );
-        }
+          }
+
+}
+Widget _favouritePath(String path){
+  return Container(
+    width: double.infinity,
+    height:40,
+    decoration: BoxDecoration(
+        color: Color(0xFFFFC400),
+        borderRadius: BorderRadius.circular(7),
+        border: Border.all(color: const Color(0xFFBFE3f2),
+
+        )
+    ),
+
+  );
 }
 
 

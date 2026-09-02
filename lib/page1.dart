@@ -62,6 +62,22 @@ Widget _favouritePath(String path){
 
         )
     ),
+    child:Row(
+      children: [
+        const Icon(
+          Icons.search,
+          color:Colors.yellow,
+        ),
+        const SizedBox(width: 6,),
+        Text(path,
+          style: const TextStyle(
+            fontSize: 16,
+            color: Color(0xFF070C16),
+            fontWeight: .w500,
+          ),
+        )
+      ],
+    ),
 
   );
 }

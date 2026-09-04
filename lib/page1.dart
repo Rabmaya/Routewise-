@@ -40,7 +40,20 @@ child: Column(
           color: const Color(0xFFBFE3f2),
         ),
       ),
-
+      child:Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children:[
+          const Text(
+            'Where to next?',
+            style: TextStyle(fontSize:25,
+                fontWeight: FontWeight.bold,
+                color:Color(0xFFFFC400)
+            ),
+          ),
+          ///fjjjfhjhf
+        ],
+      ),
         ),
         const SizedBox(height:20),
         _favouritePath('gulshan to motizheel'),

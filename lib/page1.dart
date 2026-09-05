@@ -51,7 +51,18 @@ child: Column(
                 color:Color(0xFFFFC400)
             ),
           ),
-          ///fjjjfhjhf
+          const SizedBox(height:20),
+
+          TextField(
+            decoration: InputDecoration(
+                hintText: 'Start Location',
+                hintStyle: const TextStyle(color: Colors.blueGrey
+                ),
+                prefixIcon:const Icon(
+                  Icons.search,
+                  color:Colors.blueGrey,
+                ),
+
         ],
       ),
         ),

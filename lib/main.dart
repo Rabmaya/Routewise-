@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
       title: 'Routewise',
       theme: ThemeData(
         scaffoldBackgroundColor:const Color(0xFF070C16),
-        colorScheme: .fromSeed(seedColor: Colors.white),
+        //colorScheme: .fromSeed(seedColor: Colors.white),
       ),
       home: const MyHomePage(title: ' Routewise Login'),
     );
@@ -42,7 +42,7 @@ bool hidepassword =true;
     return Scaffold(
       appBar: AppBar(
 
-        backgroundColor:const Color(0xFF070C16),//Theme.of(context).colorScheme.inversePrimary,
+        backgroundColor:const Color(0xFF070C16),
 
         centerTitle:true,
         title:RichText(

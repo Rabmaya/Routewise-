@@ -62,10 +62,19 @@ child: Column(
                   Icons.search,
                   color:Colors.blueGrey,
                 ),
+                filled: true,
+                fillColor:  const Color(0xFFAEB9CE),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(7),
+                  borderSide: const BorderSide(
+                    color:Color(0xFF303747),
+                  ),
+                )
+            ),
+          ),
+          const SizedBox(height:2),
 
-        ],
-      ),
-        ),
+          //havw
         const SizedBox(height:20),
         _favouritePath('gulshan to motizheel'),
       ],

@@ -66,7 +66,7 @@ bool hidepassword =true;
 
           mainAxisAlignment: .start,
           children: [
-            const SizedBox(height:180),
+            const SizedBox(height:130),
             const Text('Welcome! Please Sign In ',
               style:TextStyle(fontSize:25,color:Color(0xFFAEB9CE)),
             ),

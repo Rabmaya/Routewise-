@@ -76,18 +76,16 @@ child: Column(
         ],
       ),
     ),
-          //have
 
     const SizedBox(height:20),
         _favouritePath('gulshan to motizheel'),
       ],
     ),
       ),
-        ]
-)
-     )
+
+
     );
-          }
+  }
 
 }
 Widget _favouritePath(String path){

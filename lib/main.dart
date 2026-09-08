@@ -13,6 +13,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Routewise',
       theme: ThemeData(
         scaffoldBackgroundColor:const Color(0xFF070C16),

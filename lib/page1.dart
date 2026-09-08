@@ -72,9 +72,13 @@ child: Column(
                 )
             ),
           ),
+
+        ],
+      ),
+    ),
           //have
 
-        const SizedBox(height:20),
+    const SizedBox(height:20),
         _favouritePath('gulshan to motizheel'),
       ],
     ),

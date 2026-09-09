@@ -1,6 +1,6 @@
-
 import 'package:flutter/material.dart';
 import 'page1.dart';
+import 'page2.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor:const Color(0xFF070C16),
         //colorScheme: .fromSeed(seedColor: Colors.white),
       ),
-      home: const MyHomePage(title: ' Routewise Login'),
+      home: const MyHomePage(title: ' Routewise Login'),// page2(),//
     );
   }
 }
@@ -55,7 +55,7 @@ bool hidepassword =true;
               ),
               TextSpan(
                 text:'Wise',
-                style:TextStyle(fontSize:30,color:Color(0xFFE8E8E8)),
+                style:TextStyle(fontSize:30,color:Colors.white),
               ),
             ],
         ),
@@ -65,17 +65,22 @@ bool hidepassword =true;
       body: Center(
         child: Column(
 
-          mainAxisAlignment: .start,
+          mainAxisAlignment: .center,
+          crossAxisAlignment: .center,
           children: [
-            const SizedBox(height:130),
+            //const SizedBox(height:130),
             const Text('Welcome! Please Sign In ',
               style:TextStyle(fontSize:25,color:Color(0xFFAEB9CE)),
             ),
             const SizedBox(height:40),
               TextField(
+                style: TextStyle(
+                  color: Colors.white,fontSize: 18,
+                ),
                 decoration: InputDecoration(
                     hintText: 'Email or Phone',
-                    hintStyle: const TextStyle(color: Color(0xFFAEB9CE)
+                    hintStyle: const TextStyle(color: Color(0xFFAEB9CE),
+                        fontSize: 15
                     ),
                     filled: true,
                     fillColor:  const Color(0xFF151A24),
@@ -89,9 +94,12 @@ bool hidepassword =true;
             ),
             const SizedBox(height:20),
             TextField(
+              style: TextStyle(
+                color: Colors.white,fontSize: 18,
+              ),
               decoration: InputDecoration(
                   hintText: 'Password',
-                  hintStyle: const TextStyle(color: Color(0xFFAEB9CE)
+                  hintStyle: const TextStyle(color: Color(0xFFAEB9CE),fontSize: 18
                   ),
                   filled: true,
                   fillColor:  const Color(0xFF151A24),
@@ -133,23 +141,30 @@ bool hidepassword =true;
                   borderRadius: BorderRadius.circular(7),
                 ),
               ),
-              child: const Text('Login',
+              child: const Text('Log in',
                 style: TextStyle(fontSize: 20,
                   color: Colors.white,
                 ),
               ))
       ),
       const SizedBox(width: 20,),
-      const Text('Or Register with ',
+      const Text('or',
         style:TextStyle(fontSize:20,color:Color(0xFFAEB9CE)),
       ),
       Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+
+          /*const SizedBox(width: 20,),*/
           SizedBox(
-            width: 60,
-            height:60,
-            child: OutlinedButton(onPressed: (){},
+            width: 100,
+            height:50,
+
+            child: OutlinedButton(onPressed: (){
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context)=>const page2()),
+              );
+            },
               style: OutlinedButton.styleFrom(
                 backgroundColor: const Color(0xFF151A24),
                 side: const BorderSide(
@@ -160,38 +175,17 @@ bool hidepassword =true;
                 ),
               ),
               child: const Text(
-                'G',style: TextStyle(fontSize:30,
+                'sign up',style: TextStyle(fontSize:15,
                   fontWeight: FontWeight.bold,
-                  color:Colors.purple
+                  color:Color(0xFF6264F2)
               ),
               ),
 
             ),
           ),
-          const SizedBox(width: 20,),
-          SizedBox(
-            width: 60,
-            height:60,
-            child: OutlinedButton(onPressed: (){},
-              style: OutlinedButton.styleFrom(
-                backgroundColor: const Color(0xFF151A24),
-                side: const BorderSide(
-                    color:Color(0xFF303747)
-                ),
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(7)
-                ),
-              ),
-              child: const Text(
-                'F',style: TextStyle(fontSize:30,
-                  fontWeight: FontWeight.bold,
-                  color:Colors.blueAccent
-              ),
-              ),
 
-            ),
-          ),
         ],
+
       )
       ],
     ),

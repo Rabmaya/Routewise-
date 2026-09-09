@@ -4,10 +4,14 @@ void main() {
   runApp(const page1());
 }
 
-class page1 extends StatelessWidget {
+class page1 extends StatefulWidget {
   const page1({super.key});
 
-  // This widget is the root of your application.
+  @override
+  State<page1> createState() => _page1State();
+}
+
+class _page1State extends State<page1> {
   @override
   Widget build(BuildContext context) {
 
@@ -34,7 +38,7 @@ child: Column(
     Container(
       width:double.infinity,
       decoration:BoxDecoration(
-        color: const Color(0xFFDDF3FC),
+        color: const Color(0xFF8A8CF6),
         borderRadius: BorderRadius.circular(9),
         border: Border.all(
           color: const Color(0xFFBFE3f2),
@@ -72,7 +76,26 @@ child: Column(
                 )
             ),
           ),
-
+          const SizedBox(height:2),
+          TextField(
+            decoration: InputDecoration(
+                hintText: 'Destination',
+                hintStyle: const TextStyle(color: Colors.blueGrey,
+                ),
+                prefixIcon:const Icon(
+                  Icons.search,
+                  color:Colors.blueGrey,
+                ),
+                filled: true,
+                fillColor:  const Color(0xFFAEB9CE),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(7),
+                  borderSide: const BorderSide(
+                    color:Color(0xFF303747),
+                  ),
+                )
+            ),
+          ),
         ],
       ),
     ),
@@ -86,14 +109,13 @@ child: Column(
 
     );
   }
-
 }
 Widget _favouritePath(String path){
   return Container(
     width: double.infinity,
     height:40,
     decoration: BoxDecoration(
-        color: Color(0xFFFFC400),
+        color:  Color(0xFF8A8CF6),
         borderRadius: BorderRadius.circular(7),
         border: Border.all(color: const Color(0xFFBFE3f2),
 
@@ -102,8 +124,8 @@ Widget _favouritePath(String path){
     child:Row(
       children: [
         const Icon(
-          Icons.search,
-          color:Colors.yellow,
+          Icons.star,
+          color:Color(0xFFFFC400),
         ),
         const SizedBox(width: 6,),
         Text(path,

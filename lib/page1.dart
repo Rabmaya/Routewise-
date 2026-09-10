@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:routewise/page2.dart';
 
+import 'main.dart';
+
 void main() {
   runApp(const page1());
 }
@@ -76,7 +78,7 @@ child: Column(
           //have
 
         const SizedBox(height:20),
-        _favouritePath(context,'gulshan to motizheel' as String),
+        _favouritePath(context,'gulshan to motizheel'),
       ],
     ),
       ),
@@ -95,7 +97,7 @@ Widget _favouritePath(BuildContext context, String path) {
       Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => const BusListScreen(),
+          builder: (context) => const  MyHomePage(title: 'RouteWise Login',),
         ),
       );
     },

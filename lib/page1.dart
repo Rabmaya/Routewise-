@@ -1,17 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:routewise/page2.dart';
 
 void main() {
   runApp(const page1());
 }
 
-class page1 extends StatefulWidget {
+class page1 extends StatelessWidget {
   const page1({super.key});
 
-  @override
-  State<page1> createState() => _page1State();
-}
-
-class _page1State extends State<page1> {
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
 
@@ -38,7 +35,7 @@ child: Column(
     Container(
       width:double.infinity,
       decoration:BoxDecoration(
-        color: const Color(0xFF8A8CF6),
+        color: const Color(0xFFDDF3FC),
         borderRadius: BorderRadius.circular(9),
         border: Border.all(
           color: const Color(0xFFBFE3f2),
@@ -76,68 +73,58 @@ child: Column(
                 )
             ),
           ),
-          const SizedBox(height:2),
-          TextField(
-            decoration: InputDecoration(
-                hintText: 'Destination',
-                hintStyle: const TextStyle(color: Colors.blueGrey,
-                ),
-                prefixIcon:const Icon(
-                  Icons.search,
-                  color:Colors.blueGrey,
-                ),
-                filled: true,
-                fillColor:  const Color(0xFFAEB9CE),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(7),
-                  borderSide: const BorderSide(
-                    color:Color(0xFF303747),
-                  ),
-                )
+          //have
+
+        const SizedBox(height:20),
+        _favouritePath(context,'gulshan to motizheel' as String),
+      ],
+    ),
+      ),
+        ]
+)
+     )
+    );
+          }
+
+}
+
+
+Widget _favouritePath(BuildContext context, String path) {
+  return InkWell(
+    onTap: () {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const BusListScreen(),
+        ),
+      );
+    },
+    child: Container(
+      width: double.infinity,
+      height: 40,
+      decoration: BoxDecoration(
+        color: const Color(0xFFFFC400),
+        borderRadius: BorderRadius.circular(7),
+        border: Border.all(color: const Color(0xFFBFE3F2)),
+      ),
+      child: Row(
+        children: [
+          const Icon(
+            Icons.search,
+            color: Colors.black54,
+          ),
+          const SizedBox(width: 6),
+          Text(
+            path,
+            style: const TextStyle(
+              fontSize: 16,
+              color: Color(0xFF070C16),
+              fontWeight: FontWeight.w500,
             ),
           ),
         ],
       ),
     ),
-
-    const SizedBox(height:20),
-        _favouritePath('gulshan to motizheel'),
-      ],
-    ),
-      ),
-
-
-    );
-  }
-}
-Widget _favouritePath(String path){
-  return Container(
-    width: double.infinity,
-    height:40,
-    decoration: BoxDecoration(
-        color:  Color(0xFF8A8CF6),
-        borderRadius: BorderRadius.circular(7),
-        border: Border.all(color: const Color(0xFFBFE3f2),
-
-        )
-    ),
-    child:Row(
-      children: [
-        const Icon(
-          Icons.star,
-          color:Color(0xFFFFC400),
-        ),
-        const SizedBox(width: 6,),
-        Text(path,
-          style: const TextStyle(
-            fontSize: 16,
-            color: Color(0xFF070C16),
-            fontWeight: .w500,
-          ),
-        )
-      ],
-    ),
-
   );
 }
 

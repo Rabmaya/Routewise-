@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:routewise/page2.dart';
 
@@ -10,7 +11,18 @@ void main() {
 class page1 extends StatelessWidget {
   const page1({super.key});
 
-  // This widget is the root of your application.
+  @override
+  State<page1> createState() => _page1State();
+}
+
+class _page1State extends State<page1> {
+
+  @override
+  void initState() {
+    super.initState();
+
+  }
+
   @override
   Widget build(BuildContext context) {
 
@@ -127,6 +139,46 @@ Widget _favouritePath(BuildContext context, String path) {
         ],
       ),
     ),
+    const SizedBox(height:20),
+
+        _favouritePath('gulshan to motizheel'),
+      ],
+    ),
+      ),
+
+
+    );
+  }
+}
+Widget _favouritePath(String path){
+  return Container(
+    width: double.infinity,
+    height:40,
+    decoration: BoxDecoration(
+        color:  Color(0xFF8A8CF6),
+        borderRadius: BorderRadius.circular(7),
+        border: Border.all(color: const Color(0xFFBFE3f2),
+
+        )
+    ),
+    child:Row(
+      children: [
+        const Icon(
+          Icons.star,
+          color:Color(0xFFFFC400),
+        ),
+        const SizedBox(width: 6,),
+        Text(path,
+          style: const TextStyle(
+            fontSize: 16,
+            color: Color(0xFF070C16),
+            fontWeight: .w500,
+          ),
+        )
+      ],
+    ),
+
+
   );
 }
 

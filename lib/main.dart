@@ -21,13 +21,66 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
       title: 'Routewise',
       theme: ThemeData(
-        scaffoldBackgroundColor:const Color(0xFF070C16),
+        scaffoldBackgroundColor:const  Color(0xFF070C16),
         //colorScheme: .fromSeed(seedColor: Colors.white),
       ),
-      home: const MyHomePage(title: ' Routewise Login'),// page2(),//
+      //home: const MyHomePage(title: ' Routewise Login'),
+      // page2(),//
+      home: AnimatedSplashScreen(),
     );
   }
 }
+ class AnimatedSplashScreen  extends StatelessWidget {
+  const AnimatedSplashScreen({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white,
+      body:    Center(
+
+        child:  TweenAnimationBuilder<double>(
+          tween: Tween<double>(begin: 0.5, end: 5),
+          duration:  Duration(seconds: 6),
+          curve: Curves.easeInSine,
+          onEnd: () {
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(builder: (context) => MyHomePage(title: 'Routewise Login',)),
+            );
+          },
+          builder: (context, scaleValue, child) {
+            return Transform.scale(
+              scale: scaleValue,
+              child: child,
+            );
+          },
+          child: Container(
+            width:100,
+            height: 100,
+            decoration: BoxDecoration(
+              color: Colors.white,
+              shape: BoxShape.rectangle,
+            ),
+            child: /*Icon(
+              Icons.eco_outlined,
+              size: 50,
+              color: Colors.black,
+            ),*/Image.asset(
+              'assets/images/output_image.png',
+              width: 50,
+              height: 50,
+
+            ),
+
+          ),
+        ),
+      ),
+    );
+
+
+  }
+
+ }
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});

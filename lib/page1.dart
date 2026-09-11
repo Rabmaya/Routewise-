@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -12,6 +13,12 @@ class page1 extends StatefulWidget {
 }
 
 class _page1State extends State<page1> {
+
+  @override
+  void initState() {
+  super.initState();
+
+  }
   @override
   Widget build(BuildContext context) {
 
@@ -101,6 +108,7 @@ child: Column(
     ),
 
     const SizedBox(height:20),
+
         _favouritePath('gulshan to motizheel'),
       ],
     ),

@@ -22,7 +22,6 @@ class _MyAppState extends State<MyApp> {
       title: 'Routewise',
       theme: ThemeData(
         scaffoldBackgroundColor:const  Color(0xFF070C16),
-        //colorScheme: .fromSeed(seedColor: Colors.white),
       ),
       //home: const MyHomePage(title: ' Routewise Login'),
       // page2(),//
@@ -152,6 +151,7 @@ bool hidepassword =true;
             ),
             const SizedBox(height:20),
             TextField(
+
               style: TextStyle(
                 color: Colors.white,fontSize: 18,
               ),

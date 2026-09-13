@@ -19,10 +19,10 @@ class TicketPage extends StatelessWidget {
     List<String> times = time.split(',');
 
     return Scaffold(
-      backgroundColor:  Color(0xff050b18),
+      backgroundColor: Colors.black,
 
       appBar: AppBar(
-        backgroundColor:  Color(0xff050b18),
+        backgroundColor:  Colors.black,
         foregroundColor: Colors.white,
         title: Text("Ticket"),
         leading: IconButton(

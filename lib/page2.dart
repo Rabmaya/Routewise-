@@ -145,7 +145,11 @@ class _page2State extends State<page2> {
               ),
             ),
             const SizedBox(height:10),
-
+            TextField(
+              obscureText: hidepassword,
+              style: TextStyle(
+                color: Colors.white,fontSize: 18,
+              ),
 
 
         ),

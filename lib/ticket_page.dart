@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'page3.dart';
 import 'seat_page.dart';
-
 class TicketPage extends StatelessWidget {
   final String busName;
   final String route;
@@ -96,7 +95,7 @@ class TicketPage extends StatelessWidget {
                     builder: (context) => SeatPage(
                       busName: busName,
                       route: route,
-                      time: busTime.trim(),
+                    time: busTime.trim(),
                     ),
                   ),
                 );
@@ -108,5 +107,7 @@ class TicketPage extends StatelessWidget {
     );
   }
 }
+
+
 
 

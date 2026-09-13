@@ -125,8 +125,27 @@ class _page2State extends State<page2> {
                   )
               ),
             ),
+            const SizedBox(height:10),
+            TextField(
+              style: TextStyle(
+                color: Colors.white,fontSize: 18,
+              ),
+              decoration: InputDecoration(
+                  hintText: 'District:',
+                  hintStyle: const TextStyle(color: Color(0xFFAEB9CE),fontSize: 15
+                  ),
+                  filled: true,
+                  fillColor: const Color(0xFF151A24),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(7),
+                    borderSide: const BorderSide(
+                      color:Color(0xFF303747),
+                    ),
+                  )
+              ),
+            ),
+            const SizedBox(height:10),
 
-          ],
 
 
         ),

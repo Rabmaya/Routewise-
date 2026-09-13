@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'page3.dart';
 import 'seat_page.dart';
-
 class TicketPage extends StatelessWidget {
   final String busName;
   final String route;
@@ -22,7 +21,8 @@ class TicketPage extends StatelessWidget {
       backgroundColor: Colors.black,
 
       appBar: AppBar(
-        backgroundColor:  Colors.black,
+        backgroundColor: Colors.black,
+
         foregroundColor: Colors.white,
         title: Text("Ticket"),
         leading: IconButton(
@@ -97,6 +97,7 @@ class TicketPage extends StatelessWidget {
                       busName: busName,
                       route: route,
                       time: busTime.trim(),
+
                     ),
                   ),
                 );

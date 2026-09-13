@@ -1,5 +1,5 @@
-
 import 'package:flutter/material.dart';
+import 'page3.dart';
 
 void main() {
   runApp(const page1());
@@ -14,142 +14,194 @@ class page1 extends StatefulWidget {
 
 class _page1State extends State<page1> {
 
+
+  TextEditingController startController =
+  TextEditingController();
+
+  TextEditingController destinationController =
+  TextEditingController();
+
+
   @override
   void initState() {
-  super.initState();
-
+    super.initState();
   }
+
+
   @override
   Widget build(BuildContext context) {
 
     return Scaffold(
+
       appBar: AppBar(
-
-        backgroundColor:const Color(0xFF070C16),
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
+        backgroundColor:  Color(0xFF070C16),
         centerTitle: false,
-        title: const Text('RouteWise',
-        style:TextStyle(fontSize:30,color:Colors.white),
-        ),
 
+        title:  Text(
+          'RouteWise',
+          style: TextStyle(
+            fontSize: 30,
+            color: Colors.white,
+          ),
+        ),
       ),
+
+
       body: Center(
 
-child: Column(
+        child: Column(
+
+          mainAxisAlignment: .start,
+
+          children: [
+
+            SizedBox(height: 30),
 
 
-  mainAxisAlignment: .start,
-  children: [
-    const SizedBox(height:30),
-    Container(
-      width:double.infinity,
-      decoration:BoxDecoration(
-        color: const Color(0xFF8A8CF6),
-        borderRadius: BorderRadius.circular(9),
-        border: Border.all(
-          color: const Color(0xFFBFE3f2),
+            Container(
+
+              width: double.infinity,
+
+              decoration: BoxDecoration(
+                color:  Color(0xFF8A8CF6),
+
+                borderRadius: BorderRadius.circular(9),
+
+                border: Border.all(
+                  color:  Color(0xFFBFE3f2),
+                ),
+              ),
+
+
+              child: Column(
+
+                mainAxisAlignment: MainAxisAlignment.center,
+
+                crossAxisAlignment: CrossAxisAlignment.start,
+
+                children: [
+
+                   Text(
+                    'Where to next?',
+
+                    style: TextStyle(
+                      fontSize: 25,
+                      fontWeight: FontWeight.bold,
+                      color: Color(0xFFFFC400),
+                    ),
+                  ),
+
+
+                   SizedBox(height: 20),
+
+
+
+                  TextField(
+
+                    controller: startController,
+
+                    decoration: InputDecoration(
+
+                      hintText: 'Start Location',
+
+                      hintStyle:  TextStyle(
+                        color: Colors.blueGrey,
+                      ),
+
+                      prefixIcon: const Icon(
+                        Icons.search,
+                        color: Colors.blueGrey,
+                      ),
+
+                      filled: true,
+
+                      fillColor: const Color(0xFFAEB9CE),
+
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(7),
+
+                        borderSide: const BorderSide(
+                          color: Color(0xFF303747),
+                        ),
+                      ),
+                    ),
+                  ),
+
+
+                  const SizedBox(height: 2),
+
+
+
+                  TextField(
+
+                    controller: destinationController,
+
+                    decoration: InputDecoration(
+
+                      hintText: 'Destination',
+
+                      hintStyle: const TextStyle(
+                        color: Colors.blueGrey,
+                      ),
+
+                      prefixIcon: const Icon(
+                        Icons.search,
+                        color: Colors.blueGrey,
+                      ),
+
+                      filled: true,
+
+                      fillColor: const Color(0xFFAEB9CE),
+
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(7),
+
+                        borderSide: const BorderSide(
+                          color: Color(0xFF303747),
+                        ),
+                      ),
+                    ),
+                  ),
+
+
+                  SizedBox(height: 10),
+
+
+
+                  ElevatedButton(
+
+                    onPressed: () {
+
+                      Navigator.push(
+
+                        context,
+
+                        MaterialPageRoute(
+
+                          builder: (context) => Page3(
+
+                            start: startController.text,
+
+                            destination:
+                            destinationController.text,
+                          ),
+                        ),
+                      );
+                    },
+
+                    child:  Text(
+                      "Search Bus",
+                    ),
+                  ),
+
+                ],
+              ),
+            ),
+          ],
         ),
       ),
-      child:Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children:[
-          const Text(
-            'Where to next?',
-            style: TextStyle(fontSize:25,
-                fontWeight: FontWeight.bold,
-                color:Color(0xFFFFC400)
-            ),
-          ),
-          const SizedBox(height:20),
-
-          TextField(
-            decoration: InputDecoration(
-                hintText: 'Start Location',
-                hintStyle: const TextStyle(color: Colors.blueGrey
-                ),
-                prefixIcon:const Icon(
-                  Icons.search,
-                  color:Colors.blueGrey,
-                ),
-                filled: true,
-                fillColor:  const Color(0xFFAEB9CE),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(7),
-                  borderSide: const BorderSide(
-                    color:Color(0xFF303747),
-                  ),
-                )
-            ),
-          ),
-          const SizedBox(height:2),
-          TextField(
-            decoration: InputDecoration(
-                hintText: 'Destination',
-                hintStyle: const TextStyle(color: Colors.blueGrey,
-                ),
-                prefixIcon:const Icon(
-                  Icons.search,
-                  color:Colors.blueGrey,
-                ),
-                filled: true,
-                fillColor:  const Color(0xFFAEB9CE),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(7),
-                  borderSide: const BorderSide(
-                    color:Color(0xFF303747),
-                  ),
-                )
-            ),
-          ),
-        ],
-      ),
-    ),
-
-    const SizedBox(height:20),
-
-        _favouritePath('gulshan to motizheel'),
-      ],
-    ),
-      ),
-
-
     );
   }
 }
-Widget _favouritePath(String path){
-  return Container(
-    width: double.infinity,
-    height:40,
-    decoration: BoxDecoration(
-        color:  Color(0xFF8A8CF6),
-        borderRadius: BorderRadius.circular(7),
-        border: Border.all(color: const Color(0xFFBFE3f2),
-
-        )
-    ),
-    child:Row(
-      children: [
-        const Icon(
-          Icons.star,
-          color:Color(0xFFFFC400),
-        ),
-        const SizedBox(width: 6,),
-        Text(path,
-          style: const TextStyle(
-            fontSize: 16,
-            color: Color(0xFF070C16),
-            fontWeight: .w500,
-          ),
-        )
-      ],
-    ),
-
-  );
-}
-
-
-
 
 

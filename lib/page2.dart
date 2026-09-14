@@ -228,7 +228,8 @@ class _page2State extends State<page2> {
                       style: TextStyle(fontSize: 20,
                         color: Colors.white,
                       ),
-                    ))
+                    )
+                )
             ),
           ],
 

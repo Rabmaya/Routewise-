@@ -87,7 +87,7 @@ class TicketPage extends StatelessWidget {
 
            SizedBox(height: 15),
 
-          for (String busTime in times)
+         /* for (String busTime in times)
             ElevatedButton(
               onPressed: () {
                 Navigator.push(
@@ -103,7 +103,7 @@ class TicketPage extends StatelessWidget {
                 );
               },
               child: Text(busTime.trim()),
-            ),
+            ),*/
         ],
       ),
     );

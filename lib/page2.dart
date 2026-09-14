@@ -237,8 +237,13 @@ class _page2State extends State<page2> {
         ),
       ),
 
+      );
 
-    );
+
+
+
+
+
   }
 }
 

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'page3.dart';
 import 'seat_page.dart';
+
 class TicketPage extends StatelessWidget {
   final String busName;
   final String route;
@@ -15,6 +16,8 @@ class TicketPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+
     List<String> times = time.split(',');
 
     return Scaffold(
@@ -22,16 +25,17 @@ class TicketPage extends StatelessWidget {
 
       appBar: AppBar(
         backgroundColor: Colors.black,
-
         foregroundColor: Colors.white,
         title: Text("Ticket"),
+
         leading: IconButton(
-          icon:  Icon(Icons.arrow_back),
+          icon: Icon(Icons.arrow_back),
           onPressed: () {
             Navigator.pushAndRemoveUntil(
               context,
               MaterialPageRoute(
-                builder: (context) => Page3(start: '', destination: '',),
+                builder: (context) =>
+                    Page3(start: '', destination: ''),
               ),
                   (route) => false,
             );
@@ -45,7 +49,7 @@ class TicketPage extends StatelessWidget {
 
           SizedBox(height: 20),
 
-           Text(
+          Text(
             "Your Ticket",
             style: TextStyle(
               color: Colors.white,
@@ -54,29 +58,29 @@ class TicketPage extends StatelessWidget {
             ),
           ),
 
-           SizedBox(height: 25),
+          SizedBox(height: 25),
 
           Text(
             "Bus: $busName",
-            style:  TextStyle(
+            style: TextStyle(
               color: Colors.white,
               fontSize: 20,
             ),
           ),
 
-           SizedBox(height: 15),
+          SizedBox(height: 15),
 
           Text(
             "Route: $route",
-            style:  TextStyle(
+            style: TextStyle(
               color: Colors.white70,
               fontSize: 16,
             ),
           ),
 
-           SizedBox(height: 25),
+          SizedBox(height: 25),
 
-           Text(
+          Text(
             "Select Bus Time",
             style: TextStyle(
               color: Colors.white,
@@ -85,9 +89,9 @@ class TicketPage extends StatelessWidget {
             ),
           ),
 
-           SizedBox(height: 15),
+          SizedBox(height: 15),
 
-         /* for (String busTime in times)
+          for (String busTime in times)
             ElevatedButton(
               onPressed: () {
                 Navigator.push(
@@ -97,17 +101,14 @@ class TicketPage extends StatelessWidget {
                       busName: busName,
                       route: route,
                       time: busTime.trim(),
-
                     ),
                   ),
                 );
               },
               child: Text(busTime.trim()),
-            ),*/
+            ),
         ],
       ),
     );
   }
 }
-
-

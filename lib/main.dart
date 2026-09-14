@@ -151,6 +151,7 @@ bool hidepassword =true;
             ),
             const SizedBox(height:20),
             TextField(
+              obscureText: hidepassword,
               style: TextStyle(
                 color: Colors.white,fontSize: 18,
               ),

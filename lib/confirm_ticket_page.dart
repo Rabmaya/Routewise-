@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'ticket_page.dart';
 
-
 class ConfirmTicketPage extends StatelessWidget {
   final String busName;
   final String route;
   final String time;
   final List<String> seats;
 
-   ConfirmTicketPage({
+  ConfirmTicketPage({
     super.key,
     required this.busName,
     required this.route,
@@ -21,19 +20,18 @@ class ConfirmTicketPage extends StatelessWidget {
     int total = seats.length * 20;
 
     return Scaffold(
-      backgroundColor:  Colors.black26,
+      backgroundColor: Colors.black26,
 
       appBar: AppBar(
-        backgroundColor:  Colors.black,
+        backgroundColor: Colors.black,
         foregroundColor: Colors.white,
-        title:  Text("Confirm Ticket"),
+        title: Text("Confirm Ticket"),
       ),
 
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-
-         SizedBox(height: 20),
+          SizedBox(height: 20),
 
           Text(
             "Ticket Details",
@@ -44,61 +42,46 @@ class ConfirmTicketPage extends StatelessWidget {
             ),
           ),
 
-           SizedBox(height: 25),
+          SizedBox(height: 25),
 
           Text(
             "Bus: $busName",
-            style:  TextStyle(
-              color: Colors.white,
-              fontSize: 19,
-            ),
+            style: TextStyle(color: Colors.white, fontSize: 19),
           ),
 
           SizedBox(height: 12),
 
           Text(
             "Time: $time",
-            style:  TextStyle(
-              color: Colors.white,
-              fontSize: 18,
-            ),
+            style: TextStyle(color: Colors.white, fontSize: 18),
           ),
 
-           SizedBox(height: 12),
+          SizedBox(height: 12),
 
           Text(
             "Seats: ${seats.join(', ')}",
-            style:  TextStyle(
-              color: Colors.white,
-              fontSize: 18,
-            ),
+            style: TextStyle(color: Colors.white, fontSize: 18),
           ),
 
-           SizedBox(height: 12),
+          SizedBox(height: 12),
 
           Text(
             "Number of Tickets: ${seats.length}",
-            style:  TextStyle(
-              color: Colors.white,
-              fontSize: 18,
-            ),
+            style: TextStyle(color: Colors.white, fontSize: 18),
           ),
 
-           SizedBox(height: 12),
+          SizedBox(height: 12),
 
           Text(
             "Price per Ticket: ৳20",
-            style: TextStyle(
-              color: Colors.white70,
-              fontSize: 18,
-            ),
+            style: TextStyle(color: Colors.white70, fontSize: 18),
           ),
 
           SizedBox(height: 20),
 
           Text(
             "Total: ৳$total",
-            style:  TextStyle(
+            style: TextStyle(
               color: Colors.white,
               fontSize: 23,
               fontWeight: FontWeight.bold,
@@ -113,13 +96,13 @@ class ConfirmTicketPage extends StatelessWidget {
                 context: context,
                 builder: (context) {
                   return AlertDialog(
-                    title:  Text("Ticket Confirmed"),
+                    title: Text("Ticket Confirmed"),
 
                     content: Text(
                       "Your $busName ticket is confirmed.\n\n"
-                          "Time: $time\n"
-                          "Seats: ${seats.join(', ')}\n"
-                          "Total: ৳$total",
+                      "Time: $time\n"
+                      "Seats: ${seats.join(', ')}\n"
+                      "Total: ৳$total",
                     ),
 
                     actions: [
@@ -134,10 +117,10 @@ class ConfirmTicketPage extends StatelessWidget {
                                 time: time,
                               ),
                             ),
-                                (route) => false,
+                            (route) => false,
                           );
                         },
-                        child:  Text("OK"),
+                        child: Text("OK"),
                       ),
                     ],
                   );
@@ -145,7 +128,7 @@ class ConfirmTicketPage extends StatelessWidget {
               );
             },
 
-            child:  Text("Confirm Ticket"),
+            child: Text("Confirm Ticket"),
           ),
         ],
       ),

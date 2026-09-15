@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'confirm_ticket_page.dart';
 
-
 class SeatPage extends StatelessWidget {
   final String busName;
   final String route;
@@ -17,23 +16,52 @@ class SeatPage extends StatelessWidget {
   });
 
   final List<String> seats = [
-    "1A", "1B", "1C", "1D",
-    "2A", "2B", "2C", "2D",
-    "3A", "3B", "3C", "3D",
-    "4A", "4B", "4C", "4D",
-    "5A", "5B", "5C", "5D",
-    "6A", "6B", "6C", "6D",
-    "7A", "7B", "7C", "7D",
-    "8A", "8B", "8C", "8D",
-    "9A", "9B", "9C", "9D",
-    "10A", "10B", "10C", "10D",
+    "1A",
+    "1B",
+    "1C",
+    "1D",
+    "2A",
+    "2B",
+    "2C",
+    "2D",
+    "3A",
+    "3B",
+    "3C",
+    "3D",
+    "4A",
+    "4B",
+    "4C",
+    "4D",
+    "5A",
+    "5B",
+    "5C",
+    "5D",
+    "6A",
+    "6B",
+    "6C",
+    "6D",
+    "7A",
+    "7B",
+    "7C",
+    "7D",
+    "8A",
+    "8B",
+    "8C",
+    "8D",
+    "9A",
+    "9B",
+    "9C",
+    "9D",
+    "10A",
+    "10B",
+    "10C",
+    "10D",
   ];
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
-      backgroundColor:  Colors.cyanAccent,
+      backgroundColor: Colors.cyanAccent,
 
       appBar: AppBar(
         backgroundColor: Colors.white,
@@ -43,13 +71,12 @@ class SeatPage extends StatelessWidget {
 
       body: ListView(
         children: [
-
-           SizedBox(height: 20),
+          SizedBox(height: 20),
 
           Text(
             busName,
             textAlign: TextAlign.center,
-            style:  TextStyle(
+            style: TextStyle(
               color: Colors.black,
               fontSize: 20,
               fontWeight: FontWeight.bold,
@@ -61,15 +88,12 @@ class SeatPage extends StatelessWidget {
           Text(
             time,
             textAlign: TextAlign.center,
-            style:  TextStyle(
-              color: Colors.black54,
-              fontSize: 16,
-            ),
+            style: TextStyle(color: Colors.black54, fontSize: 16),
           ),
 
-           SizedBox(height: 20),
+          SizedBox(height: 20),
 
-           Text(
+          Text(
             "Select Seats",
             textAlign: TextAlign.center,
             style: TextStyle(
@@ -79,19 +103,15 @@ class SeatPage extends StatelessWidget {
             ),
           ),
 
-           SizedBox(height: 5),
+          SizedBox(height: 5),
 
           Text(
             "Selected: ${selectedSeats.length}/4",
             textAlign: TextAlign.center,
-            style:  TextStyle(
-              color: Colors.black54,
-              fontSize: 15,
-            ),
+            style: TextStyle(color: Colors.black54, fontSize: 15),
           ),
 
-           SizedBox(height: 20),
-
+          SizedBox(height: 20),
 
           for (int i = 0; i < seats.length; i += 4)
             Row(
@@ -100,14 +120,14 @@ class SeatPage extends StatelessWidget {
                 seatButton(context, seats[i]),
                 seatButton(context, seats[i + 1]),
 
-                 SizedBox(width: 30),
+                SizedBox(width: 30),
 
                 seatButton(context, seats[i + 2]),
                 seatButton(context, seats[i + 3]),
               ],
             ),
 
-           SizedBox(height: 25),
+          SizedBox(height: 25),
 
           if (selectedSeats.isNotEmpty)
             ElevatedButton(
@@ -124,10 +144,10 @@ class SeatPage extends StatelessWidget {
                   ),
                 );
               },
-              child:  Text("Continue"),
+              child: Text("Continue"),
             ),
 
-           SizedBox(height: 20),
+          SizedBox(height: 20),
         ],
       ),
     );
@@ -137,7 +157,7 @@ class SeatPage extends StatelessWidget {
     bool selected = selectedSeats.contains(seat);
 
     return Container(
-      margin:  EdgeInsets.all(5),
+      margin: EdgeInsets.all(5),
 
       child: SizedBox(
         width: 45,
@@ -145,20 +165,13 @@ class SeatPage extends StatelessWidget {
 
         child: ElevatedButton(
           onPressed: () {
-
-
             if (selected) {
               return;
             }
 
-
             if (selectedSeats.length >= 4) {
               ScaffoldMessenger.of(context).showSnackBar(
-                 SnackBar(
-                  content: Text(
-                    "Maximum 4 tickets allowed",
-                  ),
-                ),
+                SnackBar(content: Text("Maximum 4 tickets allowed")),
               );
 
               return;
@@ -182,8 +195,7 @@ class SeatPage extends StatelessWidget {
           },
 
           style: ElevatedButton.styleFrom(
-            backgroundColor:
-            selected ? Colors.lightBlueAccent : Colors.white,
+            backgroundColor: selected ? Colors.lightBlueAccent : Colors.white,
             foregroundColor: Colors.black,
             elevation: 0,
             padding: EdgeInsets.zero,
@@ -191,15 +203,10 @@ class SeatPage extends StatelessWidget {
 
           child: Text(
             seat,
-            style:  TextStyle(
-              fontSize: 13,
-              fontWeight: FontWeight.bold,
-            ),
+            style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
           ),
         ),
       ),
     );
   }
 }
-
-

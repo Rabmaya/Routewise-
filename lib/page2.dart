@@ -12,26 +12,47 @@ class page2 extends StatefulWidget {
 }
 
 class _page2State extends State<page2> {
-  bool hidepassword =true;
-  bool hidepassword1 =true;
+  bool hidepassword = true;
+  bool hidepassword1 = true;
+
+  final TextEditingController fullNameController = TextEditingController();
+  final TextEditingController emailOrPhoneController = TextEditingController();
+  final TextEditingController countryController = TextEditingController();
+  final TextEditingController divisionController = TextEditingController();
+  final TextEditingController districtController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController confirmPasswordController = TextEditingController();
+
+  @override
+  void dispose() {
+    fullNameController.dispose();
+    emailOrPhoneController.dispose();
+    countryController.dispose();
+    divisionController.dispose();
+    districtController.dispose();
+    passwordController.dispose();
+    confirmPasswordController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
 
     return Scaffold(
       appBar: AppBar(
 
-        backgroundColor:const Color(0xFF070C16),
+        backgroundColor: const Color(0xFF070C16),
         centerTitle: true,
-        title:RichText(
-          text:const TextSpan(
-            children:[
+        title: RichText(
+          text: const TextSpan(
+            children: [
               TextSpan(
-                text:'Route',
-                style:TextStyle(fontSize:30,color:Color(0xFFFFC400)),
+                text: 'Route',
+                style: TextStyle(fontSize: 30, color: Color(0xFFFFC400)),
               ),
               TextSpan(
-                text:'Wise',
-                style:TextStyle(fontSize:30,color:Colors.white),
+                text: 'Wise',
+                style: TextStyle(fontSize: 30, color: Colors.white),
               ),
             ],
           ),
@@ -44,177 +65,186 @@ class _page2State extends State<page2> {
         child: Column(
 
 
-          mainAxisAlignment: .center,
-          crossAxisAlignment: .center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             const Text('Sign Up ',
-              style:TextStyle(fontSize:25,color:Color(0xFF6264F2),fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 25, color: Color(0xFF6264F2), fontWeight: FontWeight.bold),
             ),
             TextField(
-              style: TextStyle(
-                color: Colors.white,fontSize: 18,
+              controller: fullNameController,
+              style: const TextStyle(
+                color: Colors.white, fontSize: 18,
               ),
               decoration: InputDecoration(
                   hintText: 'Full Name:',
-                  hintStyle: const TextStyle(color: Color(0xFFAEB9CE),fontSize: 15
+                  hintStyle: const TextStyle(color: Color(0xFFAEB9CE), fontSize: 15
                   ),
                   filled: true,
                   fillColor: const Color(0xFF151A24),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(7),
                     borderSide: const BorderSide(
-                      color:Color(0xFF303747),
+                      color: Color(0xFF303747),
                     ),
                   )
               ),
             ),
-            const SizedBox(height:10),
+            const SizedBox(height: 10),
             TextField(
-              style: TextStyle(
-                color: Colors.white,fontSize: 18,
+              controller: emailOrPhoneController,
+              style: const TextStyle(
+                color: Colors.white, fontSize: 18,
               ),
               decoration: InputDecoration(
                   hintText: 'Email or Phone:',
-                  hintStyle: const TextStyle(color: Color(0xFFAEB9CE),fontSize: 15
+                  hintStyle: const TextStyle(color: Color(0xFFAEB9CE), fontSize: 15
                   ),
                   filled: true,
                   fillColor: const Color(0xFF151A24),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(7),
                     borderSide: const BorderSide(
-                      color:Color(0xFF303747),
+                      color: Color(0xFF303747),
                     ),
                   )
               ),
             ),
-            const SizedBox(height:10),
+            const SizedBox(height: 10),
             TextField(
-              style: TextStyle(
-                color: Colors.white,fontSize: 18,
+              controller: countryController,
+              style: const TextStyle(
+                color: Colors.white, fontSize: 18,
               ),
               decoration: InputDecoration(
                   hintText: 'Country:',
-                  hintStyle: const TextStyle(color: Color(0xFFAEB9CE),fontSize: 15
+                  hintStyle: const TextStyle(color: Color(0xFFAEB9CE), fontSize: 15
                   ),
                   filled: true,
                   fillColor: const Color(0xFF151A24),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(7),
                     borderSide: const BorderSide(
-                      color:Color(0xFF303747),
+                      color: Color(0xFF303747),
                     ),
                   )
               ),
             ),
-            const SizedBox(height:10),
+            const SizedBox(height: 10),
             TextField(
-              style: TextStyle(
-                color: Colors.white,fontSize: 18,
+              controller: divisionController,
+              style: const TextStyle(
+                color: Colors.white, fontSize: 18,
               ),
               decoration: InputDecoration(
                   hintText: 'Division:',
-                  hintStyle: const TextStyle(color: Color(0xFFAEB9CE),fontSize: 15
+                  hintStyle: const TextStyle(color: Color(0xFFAEB9CE), fontSize: 15
                   ),
                   filled: true,
                   fillColor: const Color(0xFF151A24),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(7),
                     borderSide: const BorderSide(
-                      color:Color(0xFF303747),
+                      color: Color(0xFF303747),
                     ),
                   )
               ),
             ),
-            const SizedBox(height:10),
+            const SizedBox(height: 10),
             TextField(
-              style: TextStyle(
-                color: Colors.white,fontSize: 18,
+              controller: districtController,
+              style: const TextStyle(
+                color: Colors.white, fontSize: 18,
               ),
               decoration: InputDecoration(
                   hintText: 'District:',
-                  hintStyle: const TextStyle(color: Color(0xFFAEB9CE),fontSize: 15
+                  hintStyle: const TextStyle(color: Color(0xFFAEB9CE), fontSize: 15
                   ),
                   filled: true,
                   fillColor: const Color(0xFF151A24),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(7),
                     borderSide: const BorderSide(
-                      color:Color(0xFF303747),
+                      color: Color(0xFF303747),
                     ),
                   )
               ),
             ),
-            const SizedBox(height:10),
+            const SizedBox(height: 10),
             TextField(
-              obscureText: hidepassword,
-              style: TextStyle(
-                color: Colors.white,fontSize: 18,
+              controller: passwordController,
+              obscureText: hidepassword1,
+              style: const TextStyle(
+                color: Colors.white, fontSize: 18,
               ),
               decoration: InputDecoration(
                   hintText: 'Password:',
-                  hintStyle: const TextStyle(color: Color(0xFFAEB9CE),fontSize: 15
+                  hintStyle: const TextStyle(color: Color(0xFFAEB9CE), fontSize: 15
                   ),
                   filled: true,
                   fillColor: const Color(0xFF151A24),
                   suffixIcon: IconButton(icon: Icon(
                     hidepassword1
-                        ?Icons.visibility_off
-                        :Icons.visibility,
+                        ? Icons.visibility_off
+                        : Icons.visibility,
                   ),
-                      onPressed:()
+                      onPressed: ()
                       {
                         setState(() {
-                          hidepassword1=!hidepassword1;
+                          hidepassword1 = !hidepassword1;
                         });
                       }
                   ),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(7),
                     borderSide: const BorderSide(
-                      color:Color(0xFF303747),
+                      color: Color(0xFF303747),
                     ),
                   )
               ),
             ),
-            const SizedBox(height:10),
+            const SizedBox(height: 10),
             TextField(
+              controller: confirmPasswordController,
               obscureText: hidepassword,
-              style: TextStyle(
-                color: Colors.white,fontSize: 18,
+              style: const TextStyle(
+                color: Colors.white, fontSize: 18,
               ),
               decoration: InputDecoration(
                   hintText: 'Confirm Password:',
-                  hintStyle: const TextStyle(color: Color(0xFFAEB9CE),fontSize: 15
+                  hintStyle: const TextStyle(color: Color(0xFFAEB9CE), fontSize: 15
                   ),
                   filled: true,
                   fillColor: const Color(0xFF151A24),
                   suffixIcon: IconButton(icon: Icon(
                     hidepassword
-                        ?Icons.visibility_off
-                        :Icons.visibility,
+                        ? Icons.visibility_off
+                        : Icons.visibility,
                   ),
-                      onPressed:()
+                      onPressed: ()
                       {
                         setState(() {
-                          hidepassword=!hidepassword;
+                          hidepassword = !hidepassword;
                         });
                       }
                   ),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(7),
                     borderSide: const BorderSide(
-                      color:Color(0xFF303747),
+                      color: Color(0xFF303747),
                     ),
                   )
               ),
             ),
-            const SizedBox(height:25),
+            const SizedBox(height: 25),
             SizedBox(
                 width: 150,
-                height:60,
-                child:ElevatedButton(onPressed:(){
+                height: 60,
+                child: ElevatedButton(onPressed: (){
+                  // Example: access entered values via the controllers, e.g.
+                  // fullNameController.text, emailOrPhoneController.text, etc.
                   Navigator.push(context,
-                    MaterialPageRoute(builder: (context)=>const page1()
+                    MaterialPageRoute(builder: (context) => const page1()
                     ),
                   );
                 },
@@ -237,13 +267,7 @@ class _page2State extends State<page2> {
         ),
       ),
 
-      );
-
-
-
-
-
+    );
 
   }
 }
-

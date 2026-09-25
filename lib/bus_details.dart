@@ -39,7 +39,18 @@ class BusDetails extends StatelessWidget {
         ),
       ),
 
-      body: const SizedBox(),
+      body: Align(
+        alignment: Alignment.topLeft,
+        child: Padding(
+          padding: const EdgeInsets.all(20),
+          child: Image.asset(
+            'assets/images/logo.jpeg',
+            width: 140,
+            height: 140,
+            fit: BoxFit.contain,
+          ),
+        ),
+      ),
     );
   }
 }

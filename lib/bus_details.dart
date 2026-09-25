@@ -39,16 +39,72 @@ class BusDetails extends StatelessWidget {
         ),
       ),
 
-      body: Align(
-        alignment: Alignment.topLeft,
-        child: Padding(
-          padding: const EdgeInsets.all(20),
-          child: Image.asset(
-            'assets/images/logo.jpeg',
-            width: 140,
-            height: 140,
-            fit: BoxFit.contain,
-          ),
+      body: Padding(
+        padding: const EdgeInsets.all(20),
+
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            // RouteWise Logo
+            Image.asset(
+              'assets/images/logo.jpeg',
+              width: 140,
+              height: 140,
+              fit: BoxFit.contain,
+            ),
+
+            const SizedBox(width: 20),
+
+            // Bus Details
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  // Bus Name
+                  Text(
+                    busName,
+                    style: const TextStyle(
+                      color: Colors.black,
+                      fontSize: 30,
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+
+                  const SizedBox(height: 10),
+
+                  // Start → Destination
+                  Text(
+                    "${route.split(" - ").first} → "
+                    "${route.split(" - ").last}",
+                    style: const TextStyle(color: Colors.black87, fontSize: 22),
+                  ),
+
+                  const SizedBox(height: 12),
+
+                  // Time
+                  Row(
+                    children: [
+                      const Icon(
+                        Icons.access_time,
+                        color: Colors.blue,
+                        size: 25,
+                      ),
+
+                      const SizedBox(width: 8),
+
+                      Text(
+                        time,
+                        style: const TextStyle(
+                          color: Colors.black,
+                          fontSize: 22,
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ],
         ),
       ),
     );

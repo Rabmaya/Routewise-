@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "399225475600",
+    "project_id": "routewise-ca56a",
+    "storage_bucket": "routewise-ca56a.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:399225475600:android:c6ca3dc58cf0a0961f7095",
+        "android_client_info": {
+          "package_name": "com.example.routewise"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCaI3IH_r9bk3o6RMf897MoQsDEgASUb_A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

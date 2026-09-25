@@ -90,11 +90,9 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  TextEditingController emailController =
-  TextEditingController();
+  TextEditingController emailController = TextEditingController();
 
-  TextEditingController passwordController =
-  TextEditingController();
+  TextEditingController passwordController = TextEditingController();
   bool hidepassword = true;
   @override
   Widget build(BuildContext context) {

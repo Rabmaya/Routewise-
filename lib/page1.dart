@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'ticket_page.dart';
+import 'page2.dart';
 import 'page3.dart';
 import 'seat_page.dart';
 void main() {
@@ -18,13 +19,12 @@ class _page1State extends State<page1> {
 
   late final List<Widget> _tabs = [
     const _HomeSearch(),
-
+    const page2(),
     TicketPage(
       busName: '',
       route: '',
       time: '',
     ),
-
     Page3(
       start: '',
       destination: '',
@@ -47,22 +47,27 @@ class _page1State extends State<page1> {
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
         backgroundColor: const Color(0xFF070C16),
-        selectedItemColor: const Color(0xFFFFC400),
+        selectedItemColor: Colors.blue,
         unselectedItemColor: Colors.blueGrey,
         currentIndex: _selectedIndex,
         onTap: (index) => setState(() => _selectedIndex = index),
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
           BottomNavigationBarItem(
-            icon: Icon(Icons.event_seat),
+            icon: Icon(Icons.person),
+            label: 'sign up',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.airplane_ticket),
             label: 'Tickets',
           ),
+
           BottomNavigationBarItem(
             icon: Icon(Icons.directions_bus),
             label: 'Routes',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.airplane_ticket_rounded),
+            icon: Icon(Icons.event_seat),
             label: 'seats',
           ),
         ],

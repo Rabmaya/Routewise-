@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'ticket_page.dart';
-import 'page2.dart';
 import 'page3.dart';
 import 'seat_page.dart';
+
 void main() {
   runApp(const page1());
 }
@@ -19,21 +19,22 @@ class _page1State extends State<page1> {
 
   late final List<Widget> _tabs = [
     const _HomeSearch(),
-    const page2(),
     TicketPage(
       busName: '',
       route: '',
       time: '',
+      date: '',
     ),
     Page3(
-      start: '',
+       start: '',
       destination: '',
-    ),
 
+    ),
     SeatPage(
       busName: '',
       route: '',
       time: '',
+      date: '',
     ),
   ];
 
@@ -54,22 +55,14 @@ class _page1State extends State<page1> {
         items: const [
           BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: 'sign up',
-          ),
-          BottomNavigationBarItem(
             icon: Icon(Icons.airplane_ticket),
             label: 'Tickets',
           ),
-
           BottomNavigationBarItem(
             icon: Icon(Icons.directions_bus),
             label: 'Routes',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.event_seat),
-            label: 'seats',
-          ),
+
         ],
       ),
     );
@@ -195,7 +188,7 @@ class _HomeSearchState extends State<_HomeSearch> {
                             borderRadius: BorderRadius.circular(20),
                           ),
                         ),
-                        child: const Text(
+                        child:  Text(
                           'Search Bus',
                           style: TextStyle(
                             fontSize: 15,
@@ -208,7 +201,7 @@ class _HomeSearchState extends State<_HomeSearch> {
                 ],
               ),
             ),
-            const SizedBox(height: 20),
+             SizedBox(height: 20),
           ],
         ),
       ),

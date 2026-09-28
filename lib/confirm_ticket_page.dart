@@ -15,6 +15,8 @@ class ConfirmTicketPage extends StatelessWidget {
     required this.seats,
   });
 
+  String? get date => null;
+
   @override
   Widget build(BuildContext context) {
     int total = seats.length * 20;
@@ -115,6 +117,7 @@ class ConfirmTicketPage extends StatelessWidget {
                                 busName: busName,
                                 route: route,
                                 time: time,
+                                date: 'date',
                               ),
                             ),
                             (route) => false,
@@ -135,3 +138,4 @@ class ConfirmTicketPage extends StatelessWidget {
     );
   }
 }
+

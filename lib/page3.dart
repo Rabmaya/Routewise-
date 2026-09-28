@@ -7,7 +7,8 @@ class Page3 extends StatelessWidget {
   final String start;
   final String destination;
 
-  Page3({super.key, required this.start, required this.destination});
+
+  Page3({super.key, required this.start, required this.destination,});
 
   final List<Map<String, String>> buses = [
     {
@@ -176,8 +177,10 @@ class Page3 extends StatelessWidget {
                       busName: bus["name"]!,
                       route: bus["route"]!,
                       time: bus["time"]!,
-                    ),
+                      date: 'bus["date"]!',
+
                   ),
+                )
                 );
               },
 

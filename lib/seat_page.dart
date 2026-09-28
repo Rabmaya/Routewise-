@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'confirm_ticket_page.dart';
 
 class SeatPage extends StatelessWidget {
@@ -30,6 +31,9 @@ class SeatPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    String docId = "${busName}_${route}_$time".replaceAll(' ', '_');
+
     return Scaffold(
       backgroundColor: Colors.cyanAccent,
       appBar: AppBar(
@@ -37,235 +41,274 @@ class SeatPage extends StatelessWidget {
         backgroundColor: Colors.white,
         foregroundColor: Colors.black,
       ),
-      body: ListView(
-        children: [
-          SizedBox(height: 20),
-          Text(
-            busName,
-            textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-          ),
-          SizedBox(height: 5),
-          Text(
-            time,
-            textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 16, color: Colors.black54),
-          ),
-          SizedBox(height: 20),
-          Text(
-            "Select Seats",
-            textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-          ),
-          SizedBox(height: 5),
-          Text(
-            "Selected: ${selectedSeats.length}/4",
-            textAlign: TextAlign.center,
-            style: TextStyle(fontSize: 15, color: Colors.black54),
-          ),
-          SizedBox(height: 20),
+      body: StreamBuilder<DocumentSnapshot>(
+        stream: FirebaseFirestore.instance
+            .collection('bus_seats')
+            .doc(docId)
+            .snapshots(),
+        builder: (context, snapshot) {
+
+          List<dynamic> bookedSeats = [];
+          if (snapshot.hasData && snapshot.data!.exists) {
+            bookedSeats = (snapshot.data!.data() as Map<String, dynamic>?)?['bookedSeats'] ?? [];
+          }
+
+          return ListView(
+            children: [
+              SizedBox(height: 20),
+              Text(
+                busName,
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              ),
+              SizedBox(height: 5),
+              Text(
+                time,
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 16, color: Colors.black54),
+              ),
+              SizedBox(height: 20),
+              Text(
+                "Select Seats",
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              ),
+              SizedBox(height: 5),
+              Text(
+                "Selected: ${selectedSeats.length}/4",
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 15, color: Colors.black54),
+              ),
+              SizedBox(height: 20),
 
 
-          for (int i = 0; i < seats.length; i += 4)
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
+              for (int i = 0; i < seats.length; i += 4)
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
 
-                SizedBox(
-                  width: 50,
-                  height: 40,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      String seat = seats[i];
-                      if (selectedSeats.contains(seat)) return;
+                    SizedBox(
+                      width: 50,
+                      height: 40,
+                      child: ElevatedButton(
+                        onPressed: bookedSeats.contains(seats[i])
+                            ? null
+                            : () {
+                          String seat = seats[i];
+                          if (selectedSeats.contains(seat)) return;
 
-                      if (selectedSeats.length >= 4) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text("Maximum 4 tickets allowed")),
-                        );
-                        return;
-                      }
+                          if (selectedSeats.length >= 4) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(content: Text("Maximum 4 tickets allowed")),
+                            );
+                            return;
+                          }
 
-                      List<String> newSeats = List.from(selectedSeats)..add(seat);
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => SeatPage(
-                            busName: busName,
-                            route: route,
-                            time: time,
-                            selectedSeats: newSeats,
-                          ),
+                          List<String> newSeats = List.from(selectedSeats)..add(seat);
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => SeatPage(
+                                busName: busName,
+                                route: route,
+                                time: time,
+                                selectedSeats: newSeats,
+                              ),
+                            ),
+                          );
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: bookedSeats.contains(seats[i])
+                              ? Colors.grey
+                              : (selectedSeats.contains(seats[i])
+                              ? Colors.lightBlueAccent
+                              : Colors.white),
+                          foregroundColor: Colors.black,
+                          elevation: 0,
+                          padding: EdgeInsets.zero,
                         ),
-                      );
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: selectedSeats.contains(seats[i])
-                          ? Colors.lightBlueAccent
-                          : Colors.white,
-                      foregroundColor: Colors.black,
-                      elevation: 0,
-                      padding: EdgeInsets.zero,
+                        child: Text(seats[i],
+                            style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold)),
+                      ),
                     ),
-                    child: Text(seats[i],
-                        style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold)),
-                  ),
-                ),
-                SizedBox(width: 20),
+                    SizedBox(width: 20),
 
 
-                SizedBox(
-                  width: 50,
-                  height: 40,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      String seat = seats[i + 1];
-                      if (selectedSeats.contains(seat)) return;
+                    SizedBox(
+                      width: 50,
+                      height: 40,
+                      child: ElevatedButton(
+                        onPressed: bookedSeats.contains(seats[i + 1])
+                            ? null
+                            : () {
+                          String seat = seats[i + 1];
+                          if (selectedSeats.contains(seat)) return;
 
-                      if (selectedSeats.length >= 4) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text("Maximum 4 tickets allowed")),
-                        );
-                        return;
-                      }
+                          if (selectedSeats.length >= 4) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(content: Text("Maximum 4 tickets allowed")),
+                            );
+                            return;
+                          }
 
-                      List<String> newSeats = List.from(selectedSeats)..add(seat);
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => SeatPage(
-                            busName: busName,
-                            route: route,
-                            time: time,
-                            selectedSeats: newSeats,
-                          ),
+                          List<String> newSeats = List.from(selectedSeats)..add(seat);
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => SeatPage(
+                                busName: busName,
+                                route: route,
+                                time: time,
+                                selectedSeats: newSeats,
+                              ),
+                            ),
+                          );
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: bookedSeats.contains(seats[i + 1])
+                              ? Colors.grey
+                              : (selectedSeats.contains(seats[i + 1])
+                              ? Colors.lightBlueAccent
+                              : Colors.white),
+                          foregroundColor: Colors.black,
+                          elevation: 0,
+                          padding: EdgeInsets.zero,
                         ),
-                      );
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: selectedSeats.contains(seats[i + 1])
-                          ? Colors.lightBlueAccent
-                          : Colors.white,
-                      foregroundColor: Colors.black,
-                      elevation: 0,
-                      padding: EdgeInsets.zero,
+                        child: Text(seats[i + 1],
+                            style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold)),
+                      ),
                     ),
-                    child: Text(seats[i + 1],
-                        style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold)),
-                  ),
-                ),
 
-                SizedBox(width: 30),
+                    SizedBox(width: 30),
 
 
-                SizedBox(
-                  width: 50,
-                  height: 40,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      String seat = seats[i + 2];
-                      if (selectedSeats.contains(seat)) return;
+                    SizedBox(
+                      width: 50,
+                      height: 40,
+                      child: ElevatedButton(
+                        onPressed: bookedSeats.contains(seats[i + 2])
+                            ? null
+                            : () {
+                          String seat = seats[i + 2];
+                          if (selectedSeats.contains(seat)) return;
 
-                      if (selectedSeats.length >= 4) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text("Maximum 4 tickets allowed")),
-                        );
-                        return;
-                      }
+                          if (selectedSeats.length >= 4) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(content: Text("Maximum 4 tickets allowed")),
+                            );
+                            return;
+                          }
 
-                      List<String> newSeats = List.from(selectedSeats)..add(seat);
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => SeatPage(
-                            busName: busName,
-                            route: route,
-                            time: time,
-                            selectedSeats: newSeats,
-                          ),
+                          List<String> newSeats = List.from(selectedSeats)..add(seat);
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => SeatPage(
+                                busName: busName,
+                                route: route,
+                                time: time,
+                                selectedSeats: newSeats,
+                              ),
+                            ),
+                          );
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: bookedSeats.contains(seats[i + 2])
+                              ? Colors.grey
+                              : (selectedSeats.contains(seats[i + 2])
+                              ? Colors.lightBlueAccent
+                              : Colors.white),
+                          foregroundColor: Colors.black,
+                          elevation: 0,
+                          padding: EdgeInsets.zero,
                         ),
-                      );
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: selectedSeats.contains(seats[i + 2])
-                          ? Colors.lightBlueAccent
-                          : Colors.white,
-                      foregroundColor: Colors.black,
-                      elevation: 0,
-                      padding: EdgeInsets.zero,
+                        child: Text(seats[i + 2],
+                            style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold)),
+                      ),
                     ),
-                    child: Text(seats[i + 2],
-                        style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold)),
-                  ),
-                ),
-                SizedBox(width: 20),
+                    SizedBox(width: 20),
 
 
-                SizedBox(
-                  width: 50,
-                  height: 40,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      String seat = seats[i + 3];
-                      if (selectedSeats.contains(seat)) return;
+                    SizedBox(
+                      width: 50,
+                      height: 40,
+                      child: ElevatedButton(
+                        onPressed: bookedSeats.contains(seats[i + 3])
+                            ? null
+                            : () {
+                          String seat = seats[i + 3];
+                          if (selectedSeats.contains(seat)) return;
 
-                      if (selectedSeats.length >= 4) {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(content: Text("Maximum 4 tickets allowed")),
-                        );
-                        return;
-                      }
+                          if (selectedSeats.length >= 4) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(content: Text("Maximum 4 tickets allowed")),
+                            );
+                            return;
+                          }
 
-                      List<String> newSeats = List.from(selectedSeats)..add(seat);
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => SeatPage(
-                            busName: busName,
-                            route: route,
-                            time: time,
-                            selectedSeats: newSeats,
-                          ),
+                          List<String> newSeats = List.from(selectedSeats)..add(seat);
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => SeatPage(
+                                busName: busName,
+                                route: route,
+                                time: time,
+                                selectedSeats: newSeats,
+                              ),
+                            ),
+                          );
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: bookedSeats.contains(seats[i + 3])
+                              ? Colors.grey
+                              : (selectedSeats.contains(seats[i + 3])
+                              ? Colors.lightBlueAccent
+                              : Colors.white),
+                          foregroundColor: Colors.black,
+                          elevation: 0,
+                          padding: EdgeInsets.zero,
                         ),
-                      );
-                    },
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: selectedSeats.contains(seats[i + 3])
-                          ? Colors.lightBlueAccent
-                          : Colors.white,
-                      foregroundColor: Colors.black,
-                      elevation: 0,
-                      padding: EdgeInsets.zero,
+                        child: Text(seats[i + 3],
+                            style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold)),
+                      ),
                     ),
-                    child: Text(seats[i + 3],
-                        style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold)),
-                  ),
+                  ],
                 ),
-              ],
-            ),
 
-          SizedBox(height: 25),
+              SizedBox(height: 25),
 
-          if (selectedSeats.isNotEmpty)
-            ElevatedButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => ConfirmTicketPage(
-                      busName: busName,
-                      route: route,
-                      time: time,
-                      seats: selectedSeats,
-                    ),
-                  ),
-                );
-              },
-              child: Text("Continue"),
-            ),
+              if (selectedSeats.isNotEmpty)
+                ElevatedButton(
+                  onPressed: () {
 
-          SizedBox(height: 20),
-        ],
+                    FirebaseFirestore.instance
+                        .collection('bus_seats')
+                        .doc(docId)
+                        .set({
+                      'bookedSeats': FieldValue.arrayUnion(selectedSeats),
+                    }, SetOptions(merge: true));
+
+
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ConfirmTicketPage(
+                          busName: busName,
+                          route: route,
+                          time: time,
+                          seats: selectedSeats,
+                        ),
+                      ),
+                    );
+                  },
+                  child: Text("Continue"),
+                ),
+
+              SizedBox(height: 20),
+            ],
+          );
+        },
       ),
     );
   }

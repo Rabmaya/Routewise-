@@ -12,6 +12,49 @@ class BusDetails extends StatelessWidget {
     required this.time,
   });
 
+  String addMinutes(String time, int minutes) {
+    List<String> parts = time.split(' ');
+
+    String timePart = parts[0];
+    String amPm = parts[1];
+
+    List<String> hourMinute = timePart.split(':');
+
+    int hour = int.parse(hourMinute[0]);
+    int minute = int.parse(hourMinute[1]);
+
+    minute += minutes;
+
+    while (minute >= 60) {
+      minute -= 60;
+      hour++;
+
+      if (hour > 12) {
+        hour = 1;
+
+        if (amPm == "AM") {
+          amPm = "PM";
+        } else {
+          amPm = "AM";
+        }
+      }
+    }
+
+    return "${hour.toString()}:${minute.toString().padLeft(2, '0')} $amPm";
+  }
+
+  int getMinutesForStop(int index) {
+    if (index == 0) {
+      return 0;
+    }
+
+    if (index.isOdd) {
+      return ((index - 1) ~/ 2) * 15 + 5;
+    } else {
+      return (index ~/ 2) * 15;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     List<String> locations = route.split(" - ").map((e) => e.trim()).toList();
@@ -23,14 +66,12 @@ class BusDetails extends StatelessWidget {
         backgroundColor: Colors.black,
         foregroundColor: Colors.white,
         elevation: 0,
-
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () {
             Navigator.pop(context);
           },
         ),
-
         title: const Text(
           "Bus Details",
           style: TextStyle(
@@ -44,15 +85,12 @@ class BusDetails extends StatelessWidget {
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(20),
-
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-
                   Image.asset(
                     'assets/images/logo.jpeg',
                     width: 140,
@@ -78,8 +116,7 @@ class BusDetails extends StatelessWidget {
                         const SizedBox(height: 10),
 
                         Text(
-                          "${locations.first} → "
-                          "${locations.last}",
+                          "${locations.first} → ${locations.last}",
                           style: const TextStyle(
                             color: Colors.black87,
                             fontSize: 22,
@@ -118,17 +155,14 @@ class BusDetails extends StatelessWidget {
               Container(
                 width: double.infinity,
                 padding: const EdgeInsets.all(16),
-
                 decoration: BoxDecoration(
                   color: Colors.black,
-
                   borderRadius: BorderRadius.circular(12),
                 ),
 
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-
                     Row(
                       children: const [
                         Icon(Icons.location_on, color: Colors.white, size: 25),
@@ -151,17 +185,13 @@ class BusDetails extends StatelessWidget {
                     for (int i = 0; i < locations.length; i++)
                       Padding(
                         padding: const EdgeInsets.only(bottom: 15),
-
                         child: Row(
                           children: [
                             SizedBox(
                               width: 30,
-
                               child: Icon(
                                 i == 0 ? Icons.location_on : Icons.circle,
-
                                 color: Colors.white,
-
                                 size: i == 0 ? 22 : 14,
                               ),
                             ),
@@ -176,14 +206,13 @@ class BusDetails extends StatelessWidget {
                               ),
                             ),
 
-                            if (i == 0)
-                              Text(
-                                time,
-                                style: const TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 14,
-                                ),
+                            Text(
+                              addMinutes(time, getMinutesForStop(i)),
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 14,
                               ),
+                            ),
                           ],
                         ),
                       ),

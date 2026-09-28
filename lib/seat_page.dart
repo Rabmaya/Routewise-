@@ -308,6 +308,7 @@ class SeatPage extends StatelessWidget {
               SizedBox(height: 20),
             ],
           );
+
         },
       ),
     );
